@@ -1,5 +1,6 @@
 import crypto
 import operator
+import string
 
 
 file = open("encrypted.txt")
@@ -14,6 +15,7 @@ ref_dict = {'a':.08167,'b':.01492,'c':.02782,'d':.04253,'e':.12702,'f':.02228,'g
 
 ordered_ref_map = sorted(ref_dict.items(), key=operator.itemgetter(1))
 ordered_ref_list = [pair[0] for pair in ordered_ref_map]
+print(ordered_ref_list)
 
 freq_dict = crypto.calculate_frequencies(text)
 ordered_freq_list = []
@@ -26,5 +28,10 @@ letterMap = dict(zip(ordered_freq_list, ordered_ref_list))
 print(letterMap)
 
 decrypted = crypto.cipher(text, letterMap)
+print("Frequency Only")
+print(letterMap.keys())
+print(letterMap.values())
 print(decrypted)
+print("----------------------------------------")
+
 
